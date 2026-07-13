@@ -8,9 +8,17 @@ export function Practice() {
         <span className="eyebrow">Practice</span>
         <h1>Professional pathway to registration</h1>
         <p>
-          Understand AACA competencies, state boards, mentoring, and the habits
-          that turn graduate experience into architectural responsibility.
+          Understand AACA competencies, then log real evidence in the Archiva logbook—weekly,
+          not once a year.
         </p>
+        <div className="hero-actions" style={{ marginTop: '1.25rem' }}>
+          <Link className="btn btn-ghost" to="/practice/logbook">
+            Open logbook
+          </Link>
+          <Link className="btn btn-outline" to="/courses/registration">
+            Registration course
+          </Link>
+        </div>
       </header>
 
       <div className="path-list">
@@ -28,13 +36,8 @@ export function Practice() {
 
       <section className="section">
         <div className="split-two">
-          <div className="panel">
+          <div className="panel solid">
             <h2>What studios expect</h2>
-            <p>
-              Clear drawing communication, reliability under coordination
-              pressure, and judgement about when to ask. Technical skill without
-              professional maturity stalls careers.
-            </p>
             <ul className="checklist">
               <li>Document carefully and name files for others</li>
               <li>Read consultant mark-ups before reissuing</li>
@@ -42,15 +45,14 @@ export function Practice() {
               <li>Protect client confidence and IP</li>
             </ul>
           </div>
-          <div className="panel">
-            <h2>Career shapes</h2>
+          <div className="panel solid">
+            <h2>Working tools</h2>
             <p>
-              Residential craft studios, commercial delivery firms, government,
-              heritage, academia, product design, and urban policy—all remain
-              architecture-adjacent futures.
+              Use the competency logbook to gather evidence now. Pair with the registration course
+              lessons and ethics drills.
             </p>
-            <Link className="btn btn-outline" to="/business">
-              Explore business literacy
+            <Link className="btn btn-ghost" to="/practice/logbook">
+              Start logging hours
             </Link>
           </div>
         </div>

@@ -2,12 +2,14 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
 const links = [
+  { to: '/dashboard', label: 'Workspace' },
   { to: '/library', label: 'Library' },
   { to: '/courses', label: 'Courses' },
   { to: '/software', label: 'Software' },
   { to: '/practice', label: 'Practice' },
   { to: '/business', label: 'Business' },
-  { to: '/studio', label: 'Studio Life' },
+  { to: '/studio', label: 'Studio' },
+  { to: '/search', label: 'Search' },
 ]
 
 export function Nav() {

@@ -10,7 +10,7 @@ export function Footer() {
               Archiva <span>AU</span>
             </div>
             <p>
-              Australia&apos;s architecture library and learning hub—for students,
+              Australia&apos;s architecture library and learning workspace—for students,
               graduates, and practitioners building lasting practice.
             </p>
           </div>
@@ -19,22 +19,24 @@ export function Footer() {
             <Link to="/library">Library</Link>
             <Link to="/courses">Courses</Link>
             <Link to="/software">Software</Link>
+            <Link to="/search">Search</Link>
           </div>
           <div>
             <h4>Profession</h4>
             <Link to="/practice">Practice</Link>
-            <Link to="/business">Business</Link>
+            <Link to="/practice/logbook">Logbook</Link>
+            <Link to="/business/tools">Business tools</Link>
             <Link to="/studio">Studio Life</Link>
           </div>
           <div>
-            <h4>Focus</h4>
-            <Link to="/">Full hub</Link>
-            <Link to="/courses">Learning paths</Link>
-            <Link to="/practice">Registration</Link>
+            <h4>Workspace</h4>
+            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/saved">Saved</Link>
+            <Link to="/courses">Continue learning</Link>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>Made for architecture education in Australia.</span>
+          <span>Progress saves on this device. Educational resource—not professional advice.</span>
           <span>© {new Date().getFullYear()} Archiva</span>
         </div>
       </div>
