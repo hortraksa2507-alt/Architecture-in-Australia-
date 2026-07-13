@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
-import { businessTopics } from '../data/content'
+import { businessTopics, contractChecklist } from '../data/content'
+import { FeeEstimator } from '../components/FeeEstimator'
+import { CheckRow } from '../components/CheckRow'
+import { useArchiva } from '../context/ArchivaContext'
 
 export function Business() {
   return (
@@ -8,9 +11,14 @@ export function Business() {
         <span className="eyebrow">Business</span>
         <h1>How architecture practices actually run</h1>
         <p>
-          Fees, contracts, cashflow, procurement, and the operational realities
-          behind every beautiful project photograph.
+          Fees, contracts, cashflow, procurement—and working tools so you can practise commercial
+          judgement, not just read about it.
         </p>
+        <div className="hero-actions" style={{ marginTop: '1.25rem' }}>
+          <Link className="btn btn-ghost" to="/business/tools">
+            Open business tools
+          </Link>
+        </div>
       </header>
 
       <div className="content-grid">
@@ -27,30 +35,47 @@ export function Business() {
           </article>
         ))}
       </div>
+    </div>
+  )
+}
 
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="feature-band reverse">
-          <div className="feature-copy">
-            <span className="eyebrow">For founders &amp; employees</span>
-            <h2>Business literacy is professional care</h2>
-            <p>
-              Whether you join a large firm or open a one-person practice,
-              understanding money, risk, and delivery lets you design with
-              clearer responsibility—and protect your future self.
-            </p>
-            <Link className="btn btn-ghost" to="/studio">
-              Care for studio life
-            </Link>
-          </div>
-          <div className="feature-visual">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
-              alt="Bright collaborative studio workspace"
-              width={1600}
-              height={1100}
-              loading="lazy"
+export function BusinessTools() {
+  const { isStepDone, toggleStep } = useArchiva()
+
+  return (
+    <div className="page wrap">
+      <nav className="crumbs">
+        <Link to="/business">Business</Link>
+        <span>/</span>
+        <span>Tools</span>
+      </nav>
+
+      <header className="page-hero">
+        <span className="eyebrow">Working tools</span>
+        <h1>Fee estimator & contract checklist</h1>
+        <p>
+          Use these on real study projects, competitions, or early career scenarios. Educational
+          only—verify with your supervisor and jurisdiction.
+        </p>
+      </header>
+
+      <FeeEstimator />
+
+      <section className="tool-card" style={{ marginTop: '1.5rem' }}>
+        <div className="tool-card-head">
+          <h2>Client–architect agreement checklist</h2>
+          <p>Tick items before recommending a client signs. Progress saves locally.</p>
+        </div>
+        <div className="check-stack">
+          {contractChecklist.map((item) => (
+            <CheckRow
+              key={item.id}
+              id={item.id}
+              label={item.label}
+              checked={isStepDone(item.id)}
+              onToggle={toggleStep}
             />
-          </div>
+          ))}
         </div>
       </section>
     </div>

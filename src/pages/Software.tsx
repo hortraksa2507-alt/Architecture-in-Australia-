@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { softwareTools } from '../data/content'
+import { useArchiva } from '../context/ArchivaContext'
+import { ProgressBar } from '../components/ProgressBar'
 
 const categories = ['All', ...Array.from(new Set(softwareTools.map((t) => t.category)))]
 
 export function Software() {
   const [category, setCategory] = useState('All')
+  const { isStepDone } = useArchiva()
 
   const tools = useMemo(
-    () =>
-      softwareTools.filter(
-        (tool) => category === 'All' || tool.category === category,
-      ),
+    () => softwareTools.filter((tool) => category === 'All' || tool.category === category),
     [category],
   )
 
@@ -20,8 +21,8 @@ export function Software() {
         <span className="eyebrow">Software</span>
         <h1>Digital craft for Australian studios</h1>
         <p>
-          Learn the tools practices hire for—BIM, modelling, visualisation, and
-          coordination—tied to how work actually gets delivered.
+          Follow step-by-step tracks, tick completed drills, and keep tool notes. Built for daily
+          practice—not brochure pages.
         </p>
       </header>
 
@@ -39,32 +40,29 @@ export function Software() {
       </div>
 
       <div className="software-list">
-        {tools.map((tool) => (
-          <article className="soft-row" key={tool.id}>
-            <div>
-              <div className="soft-cat">{tool.category}</div>
-              <h3>{tool.name}</h3>
-            </div>
-            <div>
-              <p>{tool.summary}</p>
-              <p style={{ marginTop: '0.55rem', color: 'var(--leaf-mid)' }}>{tool.track}</p>
-            </div>
-            <span className="soft-link">Learning track</span>
-          </article>
-        ))}
+        {tools.map((tool) => {
+          const done = tool.steps.filter((s) => isStepDone(s.id)).length
+          return (
+            <article className="soft-row" key={tool.id}>
+              <div>
+                <div className="soft-cat">{tool.category}</div>
+                <h3>
+                  <Link to={`/software/${tool.id}`}>{tool.name}</Link>
+                </h3>
+              </div>
+              <div>
+                <p>{tool.summary}</p>
+                <div className="inline-progress" style={{ marginTop: '0.75rem' }}>
+                  <ProgressBar value={done} max={tool.steps.length} label={`${tool.name} steps`} />
+                </div>
+              </div>
+              <Link className="soft-link" to={`/software/${tool.id}`}>
+                Open track →
+              </Link>
+            </article>
+          )
+        })}
       </div>
-
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="section-head">
-          <span className="eyebrow">Recommended order</span>
-          <h2>A sensible sequence if you are starting from scratch</h2>
-          <p>
-            SketchUp or Rhino for early massing → AutoCAD drafting hygiene →
-            Revit for practice-ready documentation → visualisation for reviews
-            → Grasshopper when your geometry needs logic.
-          </p>
-        </div>
-      </section>
     </div>
   )
 }

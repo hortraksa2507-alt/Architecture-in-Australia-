@@ -1,15 +1,19 @@
 # Archiva — Australian Architecture Library
 
-A learning hub for architecture students and emerging practitioners in Australia.
+A productive learning hub for architecture students and emerging practitioners in Australia.
 
 ## What's inside
 
-- **Library** — Australian architecture, climate design, materials, theory, urbanism, detailing
-- **Courses** — Guided pathways from foundations through registration and practice literacy
-- **Software** — Revit, Rhino, AutoCAD, SketchUp, Grasshopper, visualisation, coordination tools
-- **Practice** — AACA / NSCA pathway, state boards, mentoring, career shapes
-- **Business** — Fees, contracts, procurement, running or joining a studio
-- **Studio Life** — Portfolio, critique, networks, wellbeing, money while studying
+- **Workspace dashboard** — progress, continue learning, bookmarks, notes
+- **Library** — full articles with bookmarks and personal notes
+- **Courses** — interactive lessons, checklists, completion tracking
+- **Software** — step-by-step tracks (Revit, Rhino, AutoCAD, and more)
+- **Practice logbook** — competency-tagged hours with edit/delete
+- **Business tools** — fee estimator and contract checklist
+- **Studio Life** — portfolio / critique / network checklists
+- **Search** — find topics, courses, lessons, and software
+
+Progress, notes, bookmarks, and logbook entries save in your browser (localStorage).
 
 ## Run locally
 

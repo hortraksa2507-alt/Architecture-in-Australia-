@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { libraryTopics } from '../data/content'
+import { useArchiva } from '../context/ArchivaContext'
+import { ProgressBar } from '../components/ProgressBar'
 
 const categories = ['All', ...Array.from(new Set(libraryTopics.map((t) => t.category)))]
 
 export function Library() {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('All')
+  const { isBookmarked } = useArchiva()
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -26,8 +30,8 @@ export function Library() {
         <span className="eyebrow">Library</span>
         <h1>Knowledge built for studio and site</h1>
         <p>
-          Browse architecture theory, Australian place-making, climate design,
-          materials, urban housing, and documentation craft.
+          Open full articles, save bookmarks, and keep personal notes. Progress is tracked as you
+          read and work through related courses.
         </p>
       </header>
 
@@ -58,24 +62,41 @@ export function Library() {
         ))}
       </div>
 
+      <p className="muted count-line">
+        {filtered.length} topic{filtered.length === 1 ? '' : 's'} ·{' '}
+        {libraryTopics.filter((t) => isBookmarked(t.id)).length} saved
+      </p>
+
       {filtered.length === 0 ? (
         <p className="empty-state">No topics match that search. Try a broader term.</p>
       ) : (
         <div className="content-grid">
           {filtered.map((topic) => (
-            <article className="topic" key={topic.id}>
-              <span className="label">{topic.category}</span>
-              <h3>{topic.title}</h3>
+            <article className="topic linkish" key={topic.id}>
+              <span className="label">
+                {topic.category}
+                {isBookmarked(topic.id) ? ' · Saved' : ''}
+              </span>
+              <h3>
+                <Link to={`/library/${topic.id}`}>{topic.title}</Link>
+              </h3>
               <p>{topic.summary}</p>
-              <ul>
-                {topic.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
+              <div className="topic-foot">
+                <span>{topic.readMins} min read</span>
+                <Link to={`/library/${topic.id}`}>Open article →</Link>
+              </div>
             </article>
           ))}
         </div>
       )}
+
+      <div className="inline-progress">
+        <ProgressBar
+          value={libraryTopics.filter((t) => isBookmarked(t.id)).length}
+          max={libraryTopics.length}
+          label="Topics saved"
+        />
+      </div>
     </div>
   )
 }

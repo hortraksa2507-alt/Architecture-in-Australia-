@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { hubLinks, learningPath } from '../data/content'
+import { SearchPanel } from '../components/SearchPanel'
 
 const HERO_IMG =
   'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2200&q=80'
@@ -26,12 +27,12 @@ export function Home() {
           <div className="hero-line" aria-hidden="true" />
           <h1>Australia&apos;s architecture library &amp; learning hub</h1>
           <p>
-            One place for studio craft, software skill, professional pathways,
-            business literacy, and a sustainable creative life.
+            Work through courses, software drills, logbook evidence, and business tools—a
+            productive studio companion, not a brochure.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/courses">
-              Start learning
+            <Link className="btn btn-primary" to="/dashboard">
+              Open workspace
             </Link>
             <a className="btn btn-secondary" href="#hub">
               Explore the hub
@@ -46,8 +47,8 @@ export function Home() {
             <span className="eyebrow">The hub</span>
             <h2>Everything a student needs—professionally and personally</h2>
             <p>
-              Archiva stitches knowledge, courses, tools, registration, business,
-              and studio life into one coherent place.
+              Interactive lessons, checklists that save, competency logging, fee tools, and a
+              personal dashboard.
             </p>
           </div>
           <div className="hub-grid">
@@ -69,15 +70,14 @@ export function Home() {
         <div className="wrap">
           <div className="feature-band">
             <div className="feature-copy">
-              <span className="eyebrow">Grounded here</span>
-              <h2>Built for Australian schools, climates, and practice</h2>
+              <span className="eyebrow">Productive by design</span>
+              <h2>Track progress. Keep notes. Log practice hours.</h2>
               <p>
-                From NatHERS and the NCC to state registration boards and local
-                housing typologies, Archiva teaches architecture in the context
-                you will actually work in.
+                Archiva stores your learning on this device—complete lessons, tick software steps,
+                bookmark articles, and build registration evidence as you go.
               </p>
-              <Link className="btn btn-ghost" to="/library">
-                Enter the library
+              <Link className="btn btn-ghost" to="/dashboard">
+                Go to dashboard
               </Link>
             </div>
             <div className="feature-visual">
@@ -96,11 +96,20 @@ export function Home() {
       <section className="section" style={{ background: 'var(--mist)' }}>
         <div className="wrap">
           <div className="section-head">
+            <span className="eyebrow">Find fast</span>
+            <h2>Search the whole library</h2>
+            <p>Jump straight into topics, lessons, and software tracks.</p>
+          </div>
+          <SearchPanel />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
             <span className="eyebrow">Your arc</span>
             <h2>A clear path through study into practice</h2>
-            <p>
-              Follow the sequence, or jump to where you need strength today.
-            </p>
+            <p>Follow the sequence, or jump to where you need strength today.</p>
           </div>
           <div className="path-list">
             {learningPath.map((step) => (
@@ -119,17 +128,17 @@ export function Home() {
 
       <section className="cta-band">
         <div className="cta-inner">
-          <h2>Open a course, open a tool, open a career chapter.</h2>
+          <h2>Start a lesson, a software drill, or a logbook entry.</h2>
           <p>
-            Whether you are preparing a first portfolio, learning Revit for a
-            graduate role, or mapping AACA competencies—start from here.
+            Whether you are preparing a first portfolio, learning Revit for a graduate role, or
+            mapping AACA competencies—work from here.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/software">
-              Learn software
+            <Link className="btn btn-primary" to="/courses">
+              Start a course
             </Link>
-            <Link className="btn btn-secondary" to="/practice">
-              Practice pathway
+            <Link className="btn btn-secondary" to="/practice/logbook">
+              Open logbook
             </Link>
           </div>
         </div>
