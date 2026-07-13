@@ -1,6 +1,6 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { searchAll } from '../data/content'
+import { searchAll } from '../data/searchIndex'
 
 export function SearchPanel({
   compact = false,

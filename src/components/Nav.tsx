@@ -2,13 +2,14 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 
 const links = [
+  { to: '/explore', label: '3D Hub' },
   { to: '/dashboard', label: 'Workspace' },
-  { to: '/library', label: 'Library' },
   { to: '/courses', label: 'Courses' },
   { to: '/software', label: 'Software' },
-  { to: '/practice', label: 'Practice' },
-  { to: '/business', label: 'Business' },
-  { to: '/studio', label: 'Studio' },
+  { to: '/books', label: 'Books' },
+  { to: '/viz', label: 'Viz Lab' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/library', label: 'Library' },
   { to: '/search', label: 'Search' },
 ]
 

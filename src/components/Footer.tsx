@@ -10,29 +10,30 @@ export function Footer() {
               Archiva <span>AU</span>
             </div>
             <p>
-              Australia&apos;s architecture library and learning workspace—for students,
-              graduates, and practitioners building lasting practice.
+              Australia&apos;s architecture library and learning workspace—courses, software books,
+              3D visualisation, and practice tools.
             </p>
           </div>
           <div>
             <h4>Learn</h4>
-            <Link to="/library">Library</Link>
+            <Link to="/explore">3D Campus</Link>
             <Link to="/courses">Courses</Link>
             <Link to="/software">Software</Link>
-            <Link to="/search">Search</Link>
+            <Link to="/books">Books</Link>
           </div>
           <div>
-            <h4>Profession</h4>
-            <Link to="/practice">Practice</Link>
+            <h4>Create</h4>
+            <Link to="/viz">Viz Lab</Link>
+            <Link to="/projects">Projects</Link>
             <Link to="/practice/logbook">Logbook</Link>
-            <Link to="/business/tools">Business tools</Link>
             <Link to="/studio">Studio Life</Link>
           </div>
           <div>
             <h4>Workspace</h4>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/library">Library</Link>
             <Link to="/saved">Saved</Link>
-            <Link to="/courses">Continue learning</Link>
+            <Link to="/search">Search</Link>
           </div>
         </div>
         <div className="footer-bottom">

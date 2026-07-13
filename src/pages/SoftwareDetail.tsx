@@ -77,8 +77,17 @@ export function SoftwareDetail() {
         <Link className="btn btn-outline" to="/software">
           All software
         </Link>
-        <Link className="btn btn-ghost" to="/courses/digital">
-          Digital craft course
+        <Link
+          className="btn btn-ghost"
+          to={
+            tool.id === 'revit'
+              ? '/books/revit-field-guide'
+              : tool.id === 'rhino' || tool.id === 'lumion' || tool.id === 'grasshopper'
+                ? '/books/rhino-viz-craft'
+                : '/books'
+          }
+        >
+          Related learning book
         </Link>
       </div>
     </div>

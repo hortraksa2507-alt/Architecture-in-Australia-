@@ -1111,7 +1111,7 @@ export function allSoftwareSteps() {
 }
 
 export type SearchHit = {
-  type: 'library' | 'course' | 'software' | 'lesson'
+  type: 'library' | 'course' | 'software' | 'lesson' | 'book' | 'project'
   id: string
   title: string
   blurb: string
@@ -1174,5 +1174,8 @@ export function searchAll(query: string): SearchHit[] {
     }
   }
 
+  // books & projects imported lazily via dynamic strings to avoid circular deps —
+  // search extended in searchIndex.ts
   return hits.slice(0, 40)
 }
+

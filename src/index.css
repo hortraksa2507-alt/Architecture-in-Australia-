@@ -1758,3 +1758,420 @@ label .check-copy {
     font-size: 0.92rem;
   }
 }
+
+/* ---------- 3D Explore ---------- */
+.explore-page {
+  padding-bottom: 3rem;
+}
+
+.scene-shell {
+  position: relative;
+  height: min(72vh, 640px);
+  margin: 0.5rem 0 1.5rem;
+  border-block: 1px solid var(--stone);
+  background: #e4e7df;
+}
+
+.scene-shell canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.scene-hint {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  padding: 0.55rem 0.8rem;
+  background: color-mix(in srgb, var(--ink) 72%, transparent);
+  color: var(--mist);
+  font-size: 0.8rem;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.hotspot-label {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 8rem;
+  padding: 0.45rem 0.6rem;
+  background: color-mix(in srgb, var(--mist) 92%, transparent);
+  border: 1px solid var(--stone);
+  color: var(--ink);
+  text-align: center;
+  transform: translateY(4px);
+  transition: transform 0.2s var(--ease), opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.hotspot-label strong {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--leaf);
+}
+
+.hotspot-label span {
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+}
+
+.hotspot-label.on {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--oxide);
+}
+
+.explore-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+/* ---------- Books ---------- */
+.wrap.wide {
+  max-width: 82rem;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.book-grid.compact {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.book-cover {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.4rem 1.35rem 1.25rem;
+  background: var(--mist);
+  border: 1px solid var(--stone);
+  min-height: 16rem;
+  transition: border-color 0.2s ease, transform 0.25s var(--ease);
+}
+
+.book-cover:hover {
+  border-color: var(--leaf-mid);
+  transform: translateY(-2px);
+}
+
+.book-cover-bar {
+  height: 0.35rem;
+  width: 3.5rem;
+}
+
+.book-cover h2 {
+  font-size: 1.35rem;
+  color: var(--leaf);
+}
+
+.book-cover p {
+  font-weight: 300;
+  color: var(--ink-soft);
+  flex: 1;
+}
+
+.book-cover-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--leaf-mid);
+  font-weight: 500;
+}
+
+.book-reader {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.book-toc {
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+  background: var(--mist);
+  border: 1px solid var(--stone);
+  padding: 1.1rem;
+}
+
+.book-toc-head h2 {
+  font-size: 1.05rem;
+  color: var(--leaf);
+  margin: 0.35rem 0 0.75rem;
+}
+
+.book-toc ol {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+
+.book-toc button {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1.8rem 1fr;
+  gap: 0.5rem;
+  padding: 0.55rem 0.35rem;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid color-mix(in srgb, var(--stone) 70%, transparent);
+}
+
+.book-toc button.active,
+.book-toc button:hover {
+  color: var(--leaf);
+}
+
+.book-toc button span:first-child {
+  color: var(--oxide);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.book-spread {
+  position: relative;
+  background: var(--mist);
+  border: 1px solid var(--stone);
+  min-height: 28rem;
+  display: grid;
+  grid-template-columns: 0.7rem 1fr;
+}
+
+.book-spine {
+  background: linear-gradient(180deg, var(--book-accent, var(--oxide)), color-mix(in srgb, var(--book-accent, var(--oxide)) 50%, var(--ink)));
+}
+
+.book-page {
+  padding: 1.75rem 1.6rem 1.4rem;
+}
+
+.book-page h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--leaf);
+  margin: 0.55rem 0 1rem;
+}
+
+.book-page p {
+  font-size: 1.02rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+  max-width: 62ch;
+}
+
+.book-callout {
+  margin: 1.25rem 0;
+  padding: 0.95rem 1rem;
+  border-left: 3px solid var(--book-accent, var(--oxide));
+  background: color-mix(in srgb, var(--book-accent, var(--oxide)) 8%, var(--paper));
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--leaf);
+}
+
+.book-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--stone);
+}
+
+.book-exercise {
+  margin-top: 1.25rem;
+}
+
+/* ---------- Viz lab ---------- */
+.viz-lab {
+  display: grid;
+  gap: 1rem;
+}
+
+.viz-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.viz-toolbar button {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--stone);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.viz-toolbar button.active,
+.viz-toolbar button:hover {
+  background: var(--leaf);
+  border-color: var(--leaf);
+  color: var(--mist);
+}
+
+.viz-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.viz-canvas {
+  height: min(62vh, 560px);
+  border: 1px solid var(--stone);
+  background: #e8ebe4;
+}
+
+.viz-controls {
+  margin-top: 0;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+.viz-controls h2 {
+  font-size: 1.35rem;
+}
+
+.viz-controls p {
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+.viz-controls label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--leaf-mid);
+}
+
+.viz-controls input[type='range'] {
+  width: 100%;
+  accent-color: var(--oxide);
+}
+
+.viz-notes h3 {
+  font-size: 1rem;
+  color: var(--leaf);
+  margin-bottom: 0.55rem;
+}
+
+/* ---------- Hub features & projects ---------- */
+.hub-feature-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+}
+
+.hub-feature {
+  background: var(--mist);
+  padding: 1.25rem 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+  min-height: 9.5rem;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.hub-feature:hover {
+  background: var(--leaf);
+  color: var(--mist);
+}
+
+.hub-feature:hover .hub-meta,
+.hub-feature:hover p {
+  color: color-mix(in srgb, var(--mist) 72%, transparent);
+}
+
+.hub-feature h3 {
+  font-size: 1.1rem;
+}
+
+.hub-feature p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+.project-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--mist);
+  border: 1px solid var(--stone);
+  padding: 1.5rem 1.4rem;
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+
+.project-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-top > div {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.project-card h2 {
+  font-size: 1.55rem;
+  color: var(--leaf);
+  margin-bottom: 0.55rem;
+}
+
+.project-card > p {
+  font-weight: 300;
+  color: var(--ink-soft);
+  max-width: 70ch;
+}
+
+@media (max-width: 1100px) {
+  .hub-feature-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .book-reader,
+  .viz-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .book-toc {
+    position: static;
+  }
+}
+
+@media (max-width: 900px) {
+  .book-grid,
+  .book-grid.compact {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hub-feature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .scene-shell {
+    height: 58vh;
+  }
+
+  .nav-links {
+    max-height: 70vh;
+    overflow: auto;
+  }
+}
