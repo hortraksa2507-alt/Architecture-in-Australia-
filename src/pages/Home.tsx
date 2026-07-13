@@ -31,8 +31,8 @@ export function Home() {
             productive studio companion, not a brochure.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/dashboard">
-              Open workspace
+            <Link className="btn btn-primary" to="/explore">
+              Enter 3D hub
             </Link>
             <a className="btn btn-secondary" href="#hub">
               Explore the hub
@@ -134,11 +134,11 @@ export function Home() {
             mapping AACA competencies—work from here.
           </p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/courses">
-              Start a course
+            <Link className="btn btn-primary" to="/software">
+              Software learning hub
             </Link>
-            <Link className="btn btn-secondary" to="/practice/logbook">
-              Open logbook
+            <Link className="btn btn-secondary" to="/books">
+              Open books
             </Link>
           </div>
         </div>
