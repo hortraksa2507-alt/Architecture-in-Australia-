@@ -4,12 +4,12 @@ import { useState } from 'react'
 const links = [
   { to: '/explore', label: '3D Hub' },
   { to: '/dashboard', label: 'Workspace' },
-  { to: '/courses', label: 'Courses' },
   { to: '/software', label: 'Software' },
+  { to: '/courses', label: 'Courses' },
+  { to: '/labs', label: 'Labs' },
+  { to: '/viz', label: 'Viz' },
   { to: '/books', label: 'Books' },
-  { to: '/viz', label: 'Viz Lab' },
   { to: '/projects', label: 'Projects' },
-  { to: '/library', label: 'Library' },
   { to: '/search', label: 'Search' },
 ]
 

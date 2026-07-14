@@ -1,17 +1,19 @@
 # Archiva — Australian Architecture Library
 
-A productive learning hub for architecture students and emerging practitioners in Australia.
+A productive interactive learning hub for architecture students and emerging practitioners in Australia.
 
 ## What's inside
 
-- **3D Campus** — interactive pavilion you can orbit; click rooms to enter labs
-- **Learning books** — chapter field guides for Revit, Rhino/viz, portfolios, Australian house docs
-- **Viz Lab** — live 3D sun path, section cuts, and eave shading experiments
+- **3D Campus** — orbitable pavilion with auto-tour HUD and room entry
+- **Software trainers** — click-through Revit/Rhino simulators + multi-week curricula + quizzes
+- **Courses** — lessons, checklists, quizzes, unlockable certificates
+- **Viz Lab** — climate presets (Melbourne/Sydney/Darwin/Alice), typology switcher, animated sun, section cuts
+- **Construction Labs** — wall assembly builder, fee estimator, more quizzes
+- **Learning books** — chapter field guides with exercises
 - **Real-world projects** — dual occ, shop-top, documentation sprint, competition viz
-- **Software & courses** — step tracks, lessons, checklists with local progress
-- **Practice logbook / business tools / studio life** — professional productivity tools
+- **Practice logbook / business tools / studio life**
 
-Progress, notes, bookmarks, and logbook entries save in your browser (localStorage).
+Progress saves in your browser (localStorage).
 
 ## Run locally
 

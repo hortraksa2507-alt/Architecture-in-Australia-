@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useArchiva } from '../context/ArchivaContext'
 import { ProgressBar } from '../components/ProgressBar'
 import { SearchPanel } from '../components/SearchPanel'
+import { CertificateRack } from '../components/CertificateRack'
 import {
   allLessons,
   allSoftwareSteps,
@@ -9,8 +10,6 @@ import {
   getCourse,
   getLibraryTopic,
   getSoftware,
-  libraryTopics,
-  softwareTools,
 } from '../data/content'
 
 export function Dashboard() {
@@ -74,6 +73,14 @@ export function Dashboard() {
         </div>
       </div>
 
+      <section className="section" style={{ paddingTop: '1rem' }}>
+        <div className="section-head">
+          <span className="eyebrow">Credentials</span>
+          <h2>Certificates earned</h2>
+        </div>
+        <CertificateRack />
+      </section>
+
       <div className="split-two dash-split">
         <section className="panel solid">
           <h2>Continue learning</h2>
@@ -105,40 +112,40 @@ export function Dashboard() {
           <h2>Productive tools</h2>
         </div>
         <div className="hub-grid">
+          <Link to="/software" className="hub-item">
+            <span className="hub-meta">Train</span>
+            <h3>Software trainers</h3>
+            <p>Revit/Rhino simulators, curricula, quizzes.</p>
+            <span className="hub-arrow">→</span>
+          </Link>
           <Link to="/courses" className="hub-item">
             <span className="hub-meta">Learn</span>
             <h3>Courses</h3>
-            <p>{courses.length} pathways with interactive lessons and checklists.</p>
+            <p>{courses.length} pathways with interactive lessons.</p>
             <span className="hub-arrow">→</span>
           </Link>
-          <Link to="/software" className="hub-item">
-            <span className="hub-meta">Tools</span>
-            <h3>Software studio</h3>
-            <p>{softwareTools.length} tracks with step completion and tips.</p>
+          <Link to="/labs" className="hub-item">
+            <span className="hub-meta">Make</span>
+            <h3>Construction labs</h3>
+            <p>Wall assemblies, fees, climate quizzes.</p>
+            <span className="hub-arrow">→</span>
+          </Link>
+          <Link to="/viz" className="hub-item">
+            <span className="hub-meta">See</span>
+            <h3>Viz laboratory</h3>
+            <p>Sun path, section cuts, typologies.</p>
             <span className="hub-arrow">→</span>
           </Link>
           <Link to="/practice/logbook" className="hub-item">
             <span className="hub-meta">Practice</span>
             <h3>Competency logbook</h3>
-            <p>Log hours against NSCA-aligned competency tags.</p>
+            <p>Log hours against NSCA-aligned tags.</p>
             <span className="hub-arrow">→</span>
           </Link>
-          <Link to="/business/tools" className="hub-item">
-            <span className="hub-meta">Business</span>
-            <h3>Fee & contracts tools</h3>
-            <p>Estimate staged fees and audit client agreements.</p>
-            <span className="hub-arrow">→</span>
-          </Link>
-          <Link to="/library" className="hub-item">
-            <span className="hub-meta">Library</span>
-            <h3>{libraryTopics.length} deep topics</h3>
-            <p>Read full articles, bookmark, and keep notes.</p>
-            <span className="hub-arrow">→</span>
-          </Link>
-          <Link to="/studio" className="hub-item">
-            <span className="hub-meta">You</span>
-            <h3>Studio checklists</h3>
-            <p>Portfolio, critique, networks, and pace trackers.</p>
+          <Link to="/explore" className="hub-item">
+            <span className="hub-meta">Explore</span>
+            <h3>3D campus</h3>
+            <p>Orbit the pavilion and enter labs.</p>
             <span className="hub-arrow">→</span>
           </Link>
         </div>

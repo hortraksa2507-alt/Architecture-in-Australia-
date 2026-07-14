@@ -5,6 +5,7 @@ import { CheckRow } from '../components/CheckRow'
 import { ProgressBar } from '../components/ProgressBar'
 import { BookmarkButton } from '../components/BookmarkButton'
 import { NotesPanel } from '../components/NotesPanel'
+import { SoftwareSimulator } from '../components/SoftwareSimulator'
 
 export function SoftwareDetail() {
   const { toolId } = useParams()
@@ -66,6 +67,12 @@ export function SoftwareDetail() {
           ))}
         </ul>
       </section>
+
+      {(tool.id === 'revit' || tool.id === 'rhino') && (
+        <div style={{ marginTop: '1.25rem' }}>
+          <SoftwareSimulator trackId={tool.id} />
+        </div>
+      )}
 
       <NotesPanel
         refType="software"

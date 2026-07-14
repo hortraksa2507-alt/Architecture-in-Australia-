@@ -24,9 +24,9 @@ export function Footer() {
           <div>
             <h4>Create</h4>
             <Link to="/viz">Viz Lab</Link>
+            <Link to="/labs">Construction labs</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/practice/logbook">Logbook</Link>
-            <Link to="/studio">Studio Life</Link>
           </div>
           <div>
             <h4>Workspace</h4>
