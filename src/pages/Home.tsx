@@ -27,16 +27,16 @@ export function Home() {
           <div className="hero-line" aria-hidden="true" />
           <h1>Australia&apos;s architecture library &amp; learning hub</h1>
           <p>
-            Work through courses, software drills, logbook evidence, and business tools—a
-            productive studio companion, not a brochure.
+            Train in software simulators, work real project briefs, read field guides, and explore a live
+            3D campus—built for Australian architecture education.
           </p>
           <div className="hero-actions">
             <Link className="btn btn-primary" to="/explore">
-              Enter 3D hub
+              Enter 3D campus
             </Link>
-            <a className="btn btn-secondary" href="#hub">
-              Explore the hub
-            </a>
+            <Link className="btn btn-secondary" to="/software">
+              Start software trainer
+            </Link>
           </div>
         </div>
       </section>
@@ -135,10 +135,10 @@ export function Home() {
           </p>
           <div className="hero-actions">
             <Link className="btn btn-primary" to="/software">
-              Software learning hub
+              Software trainers
             </Link>
-            <Link className="btn btn-secondary" to="/books">
-              Open books
+            <Link className="btn btn-secondary" to="/labs">
+              Open labs
             </Link>
           </div>
         </div>

@@ -3,6 +3,8 @@ import { getCourse } from '../data/content'
 import { useArchiva } from '../context/ArchivaContext'
 import { CheckRow } from '../components/CheckRow'
 import { NotesPanel } from '../components/NotesPanel'
+import { QuizPlayer } from '../components/QuizPlayer'
+import { quizzes } from '../data/labs'
 
 export function LessonDetail() {
   const { courseId, lessonId } = useParams()
@@ -77,6 +79,17 @@ export function LessonDetail() {
       </div>
 
       <NotesPanel refType="course" refId={lesson.id} placeholder="What clicked? What to ask in studio?" />
+
+      {(course.id === 'building' || course.id === 'foundations') && (
+        <div style={{ marginTop: '1.5rem' }}>
+          <QuizPlayer quizId="climate-design" title="Climate check" questions={quizzes['climate-design']} />
+        </div>
+      )}
+      {(course.id === 'digital' || course.id === 'practice-biz') && (
+        <div style={{ marginTop: '1.5rem' }}>
+          <QuizPlayer quizId="practice-docs" title="Docs check" questions={quizzes['practice-docs']} />
+        </div>
+      )}
 
       <div className="pager-nav">
         {prev ? (

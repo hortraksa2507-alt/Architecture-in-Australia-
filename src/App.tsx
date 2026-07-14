@@ -20,6 +20,7 @@ import { SearchPage } from './pages/SearchPage'
 import { Books } from './pages/Books'
 import { BookDetail } from './pages/BookDetail'
 import { Projects } from './pages/Projects'
+import { Labs } from './pages/Labs'
 
 const Explore = lazy(() =>
   import('./pages/Explore').then((m) => ({ default: m.Explore })),
@@ -66,6 +67,7 @@ export default function App() {
               <Route path="books/:bookId" element={<BookDetail />} />
               <Route path="viz" element={<VizPage />} />
               <Route path="projects" element={<Projects />} />
+              <Route path="labs" element={<Labs />} />
               <Route path="practice" element={<Practice />} />
               <Route path="practice/logbook" element={<Logbook />} />
               <Route path="business" element={<Business />} />

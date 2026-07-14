@@ -2,74 +2,123 @@ import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { softwareTools } from '../data/content'
 import { learningBooks } from '../data/books'
+import { softwareCurricula, quizzes } from '../data/labs'
 import { useArchiva } from '../context/ArchivaContext'
 import { ProgressBar } from '../components/ProgressBar'
+import { SoftwareSimulator } from '../components/SoftwareSimulator'
+import { QuizPlayer } from '../components/QuizPlayer'
 
 const categories = ['All', ...Array.from(new Set(softwareTools.map((t) => t.category)))]
 
 export function Software() {
   const [category, setCategory] = useState('All')
-  const { isStepDone, isLessonDone } = useArchiva()
+  const [trainer, setTrainer] = useState<'revit' | 'rhino'>('revit')
+  const { isStepDone, isLessonDone, toggleStep } = useArchiva()
 
   const tools = useMemo(
     () => softwareTools.filter((tool) => category === 'All' || tool.category === category),
     [category],
   )
 
-  const softwareBooks = learningBooks.filter((b) => b.category === 'Software' || b.category === 'Visualisation')
+  const curriculum = softwareCurricula[trainer]
+  const weeksDone = curriculum.weeks.filter((w) => isStepDone(`week-${trainer}-${w.week}`)).length
 
   return (
-    <div className="page wrap">
+    <div className="page wrap wide">
       <header className="page-hero">
         <span className="eyebrow">Software learning hub</span>
-        <h1>Tools, books, and visualisation craft</h1>
+        <h1>Train like you will work</h1>
         <p>
-          Learn software the way studios use it—step tracks, field-guide books, interactive 3D
-          visualisation, and project sprints that produce portfolio evidence.
+          Interactive simulators, multi-week curricula, quizzes, and field-guide books—built to create
+          portfolio and office-ready skill, not slide decks.
         </p>
         <div className="hero-actions" style={{ marginTop: '1.25rem' }}>
           <Link className="btn btn-ghost" to="/explore">
-            Enter 3D pavilion
+            3D campus
           </Link>
           <Link className="btn btn-outline" to="/viz">
             Viz lab
           </Link>
-          <Link className="btn btn-outline" to="/books">
-            Software books
+          <Link className="btn btn-outline" to="/labs">
+            Construction labs
           </Link>
         </div>
       </header>
 
-      <section className="hub-feature-row">
-        <Link to="/books/revit-field-guide" className="hub-feature">
-          <span className="hub-meta">Book</span>
-          <h3>Revit Field Guide</h3>
-          <p>Setup → documentation → issuing like an Australian practice.</p>
-        </Link>
-        <Link to="/books/rhino-viz-craft" className="hub-feature">
-          <span className="hub-meta">Book</span>
-          <h3>Rhino → Visualisation</h3>
-          <p>Clean geometry, Make2D, cameras, and climate-true lighting.</p>
-        </Link>
-        <Link to="/viz" className="hub-feature">
-          <span className="hub-meta">Lab</span>
-          <h3>Interactive Viz Lab</h3>
-          <p>Orbit massing, scrub sun angles, cut sections, test eaves.</p>
-        </Link>
-        <Link to="/projects#viz-competition" className="hub-feature">
-          <span className="hub-meta">Project</span>
-          <h3>Competition viz sprint</h3>
-          <p>Ten-day narrative image sequence for portfolio and contests.</p>
-        </Link>
-      </section>
-
-      <div className="section-head" style={{ marginTop: '2.5rem' }}>
-        <span className="eyebrow">Step tracks</span>
-        <h2>Software drills with saved progress</h2>
-        <p>Tick each step as you practise. Pair with the books above for deeper craft.</p>
+      <div className="filter-bar" role="tablist" aria-label="Trainer">
+        <button
+          type="button"
+          className={trainer === 'revit' ? 'active' : undefined}
+          onClick={() => setTrainer('revit')}
+        >
+          Revit trainer
+        </button>
+        <button
+          type="button"
+          className={trainer === 'rhino' ? 'active' : undefined}
+          onClick={() => setTrainer('rhino')}
+        >
+          Rhino trainer
+        </button>
       </div>
 
-      <div className="filter-bar" role="group" aria-label="Filter software">
+      <SoftwareSimulator trackId={trainer} />
+
+      <section className="curriculum-panel">
+        <div className="section-head">
+          <span className="eyebrow">Curriculum</span>
+          <h2>{curriculum.title}</h2>
+          <ProgressBar value={weeksDone} max={curriculum.weeks.length} label="Weeks completed" />
+        </div>
+        <div className="week-grid">
+          {curriculum.weeks.map((week) => {
+            const id = `week-${trainer}-${week.week}`
+            const done = isStepDone(id)
+            return (
+              <article key={id} className={`week-card${done ? ' done' : ''}`}>
+                <span className="pill">Week {week.week}</span>
+                <h3>{week.title}</h3>
+                <p>{week.focus}</p>
+                <ul className="bullet-list">
+                  {week.outcomes.map((o) => (
+                    <li key={o}>{o}</li>
+                  ))}
+                </ul>
+                <div className="week-practice">
+                  <strong>Practice</strong>
+                  {week.practice.map((p) => (
+                    <span key={p}>{p}</span>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className={`btn ${done ? 'btn-outline' : 'btn-ghost'}`}
+                  onClick={() => toggleStep(id)}
+                >
+                  {done ? 'Completed' : 'Mark week done'}
+                </button>
+              </article>
+            )
+          })}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <span className="eyebrow">Validate</span>
+          <h2>Software craft quizzes</h2>
+        </div>
+        <div className="quiz-grid">
+          <QuizPlayer quizId="revit-basics" title="Revit basics" questions={quizzes['revit-basics']} />
+          <QuizPlayer quizId="viz-craft" title="Visualisation craft" questions={quizzes['viz-craft']} />
+        </div>
+      </section>
+
+      <div className="section-head">
+        <span className="eyebrow">Step tracks</span>
+        <h2>Tool drills</h2>
+      </div>
+      <div className="filter-bar">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -81,7 +130,6 @@ export function Software() {
           </button>
         ))}
       </div>
-
       <div className="software-list">
         {tools.map((tool) => {
           const done = tool.steps.filter((s) => isStepDone(s.id)).length
@@ -108,25 +156,21 @@ export function Software() {
       </div>
 
       <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="section-head">
-          <span className="eyebrow">Recommended books</span>
-          <h2>Read, then practise in the lab</h2>
-        </div>
         <div className="book-grid compact">
-          {softwareBooks.map((book) => {
-            const done = book.chapters.filter((c) =>
-              isLessonDone(`book-${book.id}-${c.id}`),
-            ).length
-            return (
-              <Link to={`/books/${book.id}`} className="book-cover" key={book.id}>
-                <div className="book-cover-bar" style={{ background: book.coverAccent }} />
-                <span className="hub-meta">{book.category}</span>
-                <h2>{book.title}</h2>
-                <p>{book.blurb}</p>
-                <ProgressBar value={done} max={book.chapters.length} label="Book progress" />
-              </Link>
-            )
-          })}
+          {learningBooks
+            .filter((b) => b.category === 'Software' || b.category === 'Visualisation')
+            .map((book) => {
+              const done = book.chapters.filter((c) => isLessonDone(`book-${book.id}-${c.id}`)).length
+              return (
+                <Link to={`/books/${book.id}`} className="book-cover" key={book.id}>
+                  <div className="book-cover-bar" style={{ background: book.coverAccent }} />
+                  <span className="hub-meta">{book.category}</span>
+                  <h2>{book.title}</h2>
+                  <p>{book.blurb}</p>
+                  <ProgressBar value={done} max={book.chapters.length} label="Book progress" />
+                </Link>
+              )
+            })}
         </div>
       </section>
     </div>
